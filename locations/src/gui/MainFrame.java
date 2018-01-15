@@ -46,6 +46,7 @@ import filters.OrFilter;
 import filters.TimeFilter;
 import models.ScanInfo;
 import models.WifiNetwork;
+import sun.applet.Main;
 import utils.Four;
 import utils.INeedToReloadData;
 import utils.Pair;
@@ -108,6 +109,7 @@ public class MainFrame extends JFrame implements INeedToReloadData {
 	private final JButton clearData;
 	private final JButton saveToCsv;
 	private final JButton saveToKml;
+	private final JButton importFromDb;
 	private final JLabel dataSizeLabel;
 	private final JLabel numberOfApsLabel;
 
@@ -179,6 +181,7 @@ public class MainFrame extends JFrame implements INeedToReloadData {
 		clearData = new JButton("Clear Data");
 		saveToCsv = new JButton("Save To CSV");
 		saveToKml = new JButton("Save To KML");
+		importFromDb = new JButton("Import From DB");
 		dataSizeLabel = new JLabel("", JLabel.TRAILING);
 		numberOfApsLabel = new JLabel("", JLabel.TRAILING);
 		updateScansInfo();
@@ -333,6 +336,14 @@ public class MainFrame extends JFrame implements INeedToReloadData {
 				if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
 					scanService.saveToKml(chooser.getSelectedFile().getAbsolutePath() + ".kml");
 				}
+			}
+		});
+		importFromDb.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ImportFromDbFrame dbFrame = new ImportFromDbFrame(MainFrame.this);
+				dbFrame.setVisible(true);
 			}
 		});
 		setFilterButton.addActionListener(new ActionListener() {
@@ -669,6 +680,7 @@ public class MainFrame extends JFrame implements INeedToReloadData {
 			dataPanel.add(clearData);
 			dataPanel.add(saveToCsv);
 			dataPanel.add(saveToKml);
+			dataPanel.add(importFromDb);
 			dataPanel.add(dataSizeLabel);
 			dataPanel.add(numberOfApsLabel);
 
