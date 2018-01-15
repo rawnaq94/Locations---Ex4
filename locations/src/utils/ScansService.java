@@ -53,6 +53,11 @@ public class ScansService implements INeedToReloadData {
 	private void addCsvInternal(String fileFullPath) {
 		System.out.println("Parsing file: " + fileFullPath);
 		Map<ScanInfo, List<WifiNetwork>> newScans = CsvService.read(Paths.get(fileFullPath));
+		addScans(newScans);
+	}
+
+	public void addScans(Map<ScanInfo, List<WifiNetwork>> newScans)
+	{
 		for (Entry<ScanInfo, List<WifiNetwork>> entry : newScans.entrySet()) {
 			if (scans.containsKey(entry.getKey())) {
 				List<WifiNetwork> networks = scans.get(entry.getKey());

@@ -134,7 +134,8 @@ public class ImportFromDbFrame extends JFrame {
 							scans.put(scanInfo, networks);
 						}
 					}
-
+					mainFrame.scanService.addScans(scans);
+					dispose();
 				} catch (SQLException ex) {
 					ex.printStackTrace();
 				} catch (ParseException e1) {
@@ -153,7 +154,7 @@ public class ImportFromDbFrame extends JFrame {
 	}
 
 	public void initialize() {
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setSize(new Dimension(800, 900));
 		this.setTitle("WiFi scans analyzer");
 		this.setResizable(false);

@@ -58,7 +58,7 @@ import utils.ScansService;
 public class MainFrame extends JFrame implements INeedToReloadData {
 	private static final long serialVersionUID = 1L;
 	private final JPanel mainPanel;
-	private final ScansService scanService;
+	public final ScansService scanService;
 	// Algo panel
 	private final JTextField mac;
 	private final JButton submitAlgo1;
